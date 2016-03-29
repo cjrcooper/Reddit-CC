@@ -5,10 +5,12 @@ class LinksController < ApplicationController
   # GET /links
   # GET /links.json
   def index
+
     @links = Link.limit(10).sort_by { |link| link.get_upvotes.size - link.get_downvotes.size }
     @links.reverse!
-
     @allowed_extensions = %w[.jpg .jpeg .png .gif]
+    @cats = current_user.categories
+
   end
 
 
@@ -69,13 +71,11 @@ class LinksController < ApplicationController
   def upvote
     @link = Link.find(params[:id])
     @link.upvote_by current_user
-    redirect_to :back
   end
 
   def downvote
     @link = Link.find(params[:id])
     @link.downvote_by current_user
-    redirect_to :back
   end
 
   private
