@@ -5,8 +5,12 @@ class LinksController < ApplicationController
   # GET /links
   # GET /links.json
   def index
-    @links = Link.all
+    @links = Link.limit(10).sort_by { |link| link.get_upvotes.size - link.get_downvotes.size }
+    @links.reverse!
+
+    @allowed_extensions = %w[.jpg .jpeg .png .gif]
   end
+
 
   # GET /links/1
   # GET /links/1.json
