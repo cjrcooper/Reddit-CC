@@ -9,7 +9,9 @@ class LinksController < ApplicationController
     @links = Link.limit(10).sort_by { |link| link.get_upvotes.size - link.get_downvotes.size }
     @links.reverse!
     @allowed_extensions = %w[.jpg .jpeg .png .gif]
-    @cats = current_user.categories
+
+    @cats = Category.none
+    @cats = current_user.categories if current_user
 
   end
 
@@ -71,11 +73,13 @@ class LinksController < ApplicationController
   def upvote
     @link = Link.find(params[:id])
     @link.upvote_by current_user
+    render :json => { :count => @link.get_upvotes.count }
   end
 
   def downvote
     @link = Link.find(params[:id])
     @link.downvote_by current_user
+    render :json => { :count => @link.get_downvotes.count }
   end
 
   private

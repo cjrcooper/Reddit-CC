@@ -24,16 +24,21 @@
     <% end %>
 
 
-     <%= link_to like_link_path(link), method: :put, class: "btn btn-default btn-sm" do %>
+     <%= link_to like_link_path(link), method: :put, remote: true, class: "btn btn-default btn-sm vote" do %>
        <span class="glyphicon glyphicon-chevron-up"></span>
        Upvote
-       <%= link.get_upvotes.size %>
+       <span class="votes"><%= link.get_upvotes.size %></span>
      <% end %>
-     <%= link_to dislike_link_path(link), method: :put, class: "btn btn-default btn-sm" do %>
+     <%= link_to dislike_link_path(link), method: :put, remote: true, class: "btn btn-default btn-sm vote" do %>
        <span class="glyphicon glyphicon-chevron-down">
        Downvote
-       <%= link.get_downvotes.size %>
+       <span class="votes"><%= link.get_downvotes.size %></span>
      <% end %>
+
+     <div class="btn btn-default btn-sm">
+        <%= link.comments.size %> Comments
+     </div>
+
    </div>
   <div>
 
