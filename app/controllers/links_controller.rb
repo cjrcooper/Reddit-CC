@@ -12,7 +12,6 @@ class LinksController < ApplicationController
 
     @cats = Category.none
     @cats = current_user.categories if current_user
-
   end
 
 
@@ -24,6 +23,7 @@ class LinksController < ApplicationController
   # GET /links/new
   def new
     @link = current_user.links.build
+    @cat = Category.all
   end
 
   # GET /links/1/edit
@@ -34,6 +34,7 @@ class LinksController < ApplicationController
   # POST /links.json
   def create
     @link = current_user.links.build(link_params)
+    @link.category_id = params[:category_id][0]
 
     respond_to do |format|
       if @link.save
@@ -90,6 +91,6 @@ class LinksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params
-      params.require(:link).permit(:title, :url)
+      params.require(:link).permit(:title, :url, :category_id)
     end
 end

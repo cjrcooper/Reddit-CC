@@ -3,7 +3,7 @@
   <div class="link row clearfix">
     <h2>
       <%= link_to link.title, link %><br>
-      <small class="author">Submitted <%= time_ago_in_words(link.created_at) %> by <%= link.user.email %></small>
+      <small class="author">Submitted <%= time_ago_in_words(link.created_at) %> by <%= link.user.email %> from <%= link.category.cat_name %></small>
     </h2>
 
     <% if link.url.start_with?('http://') && @allowed_extensions.any?{ |ext| link.url.end_with?(ext) } %>
@@ -54,7 +54,3 @@
   </div>
 
 <% end %>
-
-  <% @cats.each do |cat| %>
-    <p><%= cat.cat_name %></p>
-  <% end %>
