@@ -12,6 +12,8 @@ class LinksController < ApplicationController
 
     @cats = Category.none
     @cats = current_user.categories if current_user
+
+    
   end
 
 

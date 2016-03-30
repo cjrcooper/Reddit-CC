@@ -3,9 +3,14 @@
   <div class="link row clearfix">
     <h2>
       <%= link_to link.title, link %><br>
-      <small class="author">Submitted <%= time_ago_in_words(link.created_at) %> by <%= link.user.email %> from <%= link.category.cat_name %></small>
+      <small class="author">Submitted <%= time_ago_in_words(link.created_at) %> by <%= link.user.email %> from <%= link_to link.category.cat_name, link.category %></small>
     </h2>
 
+
+    <div>
+      
+
+    </div>
     <% if link.url.start_with?('http://') && @allowed_extensions.any?{ |ext| link.url.end_with?(ext) } %>
       <% @img = link.url %>
       <div class="btn-group">

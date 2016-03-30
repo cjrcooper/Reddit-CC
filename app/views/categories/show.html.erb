@@ -1,9 +1,68 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Cat name:</strong>
+  <strong>Subreddit</strong>
   <%= @category.cat_name %>
 </p>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
+
+<% @links.each do |link| %>
+<% if (link.category_id == params[:id].to_i) %>
+<div class="link-container">
+  <div class="link row clearfix">
+    <h2>
+      <%= link_to link.title, link %><br>
+      <small class="author">Submitted <%= time_ago_in_words(link.created_at) %> by <%= link.user.email %> from <%= link.category.cat_name %></small>
+    </h2>
+
+    <% if link.url.start_with?('http://') && @allowed_extensions.any?{ |ext| link.url.end_with?(ext) } %>
+      <% @img = link.url %>
+      <div class="btn-group">
+        <div class="btn btn-default btn-sm img-show-btn" href="<%= link.url %>">
+          <span class="glyphicon glyphicon-picture"></span></div>
+    <% elsif link.url.include? "youtube.com/watch" %>
+      <% @vid = link.url.sub! 'watch?v=', 'embed/' %>
+      <div class="btn-group">
+       <div class="btn btn-default btn-sm img-show-btn" href="<%= link.url %>">
+           <span class="glyphicon glyphicon-facetime-video"></span></div>
+    <% else %>
+     <% @img = nil %>
+     <% @vid = nil %>
+       <div class="btn-group">
+        <a class="btn btn-default btn-sm" href="<%= link.url %>">Visit Link</a>
+    <% end %>
+
+
+     <%= link_to like_link_path(link), method: :put, remote: true, class: "btn btn-default btn-sm vote" do %>
+       <span class="glyphicon glyphicon-chevron-up"></span>
+       Upvote
+       <span class="votes"><%= link.get_upvotes.size %></span>
+     <% end %>
+     <%= link_to dislike_link_path(link), method: :put, remote: true, class: "btn btn-default btn-sm vote" do %>
+       <span class="glyphicon glyphicon-chevron-down">
+       Downvote
+       <span class="votes"><%= link.get_downvotes.size %></span>
+     <% end %>
+
+     <div class="btn btn-default btn-sm">
+        <%= link.comments.size %> Comments
+     </div>
+
+   </div>
+  <div>
+
+  <% if @img %>
+    <div class="img-index-container">
+      <a href="<%= link.url %>"><img src="<%= @img %>"></a>
+    </div>
+  <% elsif @vid %>
+    <div class="img-index-container">
+      <iframe width="640" height="390" src="<%= @vid %>" frameborder="0" allowfullscreen></iframe>
+    </div>
+  <% end %>
+  </div>
+<% end %>
+<% end %>
+
+
 <%= link_to 'Back', categories_path %>

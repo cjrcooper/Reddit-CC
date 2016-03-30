@@ -10,6 +10,12 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+    @links = Link.limit(10).sort_by { |link| link.get_upvotes.size - link.get_downvotes.size }
+    @links.reverse!
+    @allowed_extensions = %w[.jpg .jpeg .png .gif]
+
+    @cats = Category.none
+    @cats = current_user.categories if current_user
   end
 
   # GET /categories/new
