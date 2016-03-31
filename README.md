@@ -6,7 +6,7 @@ A simple reddit clone I made for my second assignment.
 ### About the stack
 
 Rails: 
-<li>Version: 4.2.6</li>
++ Version: 4.2.6
 
 Gems:
 + Devise, ~> 3.5, >= 3.5.6
