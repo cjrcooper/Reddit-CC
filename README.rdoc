@@ -1,6 +1,6 @@
 == Reddit CC
 
-This is a reddit clone I made for my second assignment. 
+####This is a reddit clone I made for my second assignment. 
 
 Part of the stack:
 
