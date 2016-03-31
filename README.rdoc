@@ -1,28 +1,33 @@
-== Reddit CC
+Reddit CC
+================
 
-####This is a reddit clone I made for my second assignment. 
+A simple reddit clone I made for my second assignment.
 
-Part of the stack:
+### About the stack
 
-* Rails version 
-  - rails, '4.2.6'
+Rails: 
++ Version: 4.2.6
 
-* System dependencies
+Gems:
++ Devise, ~> 3.5, >= 3.5.6
++ Bootstrap-sass, ~> 3.3, >= 3.3.6
++ Acts_as_votable, ~> 0.10.0
++ Simple_form, ~> 3.2, >= 3.2.1
++ Mmenu-rails, ~> 5.5, >= 5.5.3 // This version does not work, had to manually add in the files from the plugin
 
-* Configuration
+### Development
 
-* Database creation
+Overall basic functionality is out of the way, the Users can sign up, submit posts, subscribe to subreddits etc.
 
-* Database initialization
+Currently Known bugs:
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
++ User comments on posts are no longer displaying user emails and only displaying their id
++ There appears to be an issue with upvotes and downvotes causing the open content menu to duplicate for all subsquent posts underneath that post.
++ Gifs image submits do not seem to function correctly in the open image menu.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Upcoming Features:
+
++ Admin Users
++ Custom homepage depending on what you're subscribe to
++ Automatic generation of thumbnails next to the posts
