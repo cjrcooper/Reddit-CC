@@ -6,13 +6,14 @@ class LinksController < ApplicationController
   # GET /links.json
   def index
 
-    @links = Link.limit(10).sort_by { |link| link.get_upvotes.size - link.get_downvotes.size }
+
+    @links = Link.limit(100).sort_by { |link| link.get_upvotes.size - link.get_downvotes.size }
     @links.reverse!
+
     @allowed_extensions = %w[.jpg .jpeg .png .gif .gifv]
 
     @cats = Category.none
     @cats = current_user.categories if current_user
-
   end
 
 
@@ -21,6 +22,10 @@ class LinksController < ApplicationController
   def show
     @cats = Category.none
     @cats = current_user.categories if current_user
+
+    @allowed_extensions = %w[.jpg .jpeg .png .gif .gifv]
+
+    
   end
 
   # GET /links/new

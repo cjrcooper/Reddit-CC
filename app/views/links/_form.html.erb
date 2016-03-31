@@ -20,12 +20,12 @@
     <%= f.text_field :url, class: "form-control" %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :url %><br>
+  <div class="form-group submit-category">
+    <%= f.label :Subreddit %><br>
     <% @cat.each do |cat| %>
       <p>
         <span><%= cat.cat_name %></span>
-        <%= radio_button_tag 'category_id[]', cat.id %>
+        <%= radio_button_tag 'category_id[]', cat.id, required: true %>
       </p>
     <% end %>
   </div>

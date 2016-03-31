@@ -1,0 +1,242 @@
+.navbar-default{
+  background-color: #F0F7FD;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #333;
+    background-color: transparent;
+}
+
+#logo {
+	font-size: 26px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: -1px;
+	padding: 15px 0;
+	a {
+		color: #2F363E;
+	}
+}
+
+#main_content {
+	#content {
+		float: none;
+	}
+
+	padding-bottom: 100px;
+	.link {
+		padding: 2em 1em;
+		.title {
+			a {
+				color: #FF4500;
+			}
+		}
+	}
+	.comments_title {
+		margin-top: 2em;
+	}
+	#comments {
+		.comment {
+			padding: 1em 0;
+			border-top: 1px solid #E9E9E9;
+			.lead {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+
+
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px;
+  }
+}
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
+
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
+}
+
+
+.mm-listview li:hover {
+  background-color: #fff;
+}
+
+
+.mm-listview > li:not(.mm-divider):after {
+    content: '';
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0px;
+}
+
+
+a {
+    color: #6495ED;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #000;
+}
+
+.mm-listview > li > a, .mm-listview > li > span {
+    padding: 10px 10px 10px 0px;
+    text-align: center;
+}
+
+.mm-panels, .mm-panels > .mm-panel {
+  border-right: 1px solid #DBDBDB
+}
+
+.browse-categories > a{
+    color: #6495ED !important;
+    font-weight: 700;
+}
+
+#logo {
+  padding-left: 15px;
+  font-family: 'Damion', cursive;
+  text-transform: capitalize;
+  font-size: 39pt;
+  margin-top: 8px;
+  transform: rotate(-6deg);
+  text-decoration: underline;
+  position: absolute;
+}
+
+.small-reddit-logo {
+  font-family: 'Damion', cursive;
+    transform: rotate(0deg);
+    font-size: 17pt;
+    color: rgba(255, 0, 0, 0.71);
+}
+
+.login-name > a{
+      color: rgba(255, 0, 0, 0.6) !important;
+      font-family: 'Damion', cursive;
+      font-size: 23px;
+}
+
+.login-name > a:hover{
+    text-decoration: underline;
+}
+
+.browser-menu-button {
+  text-decoration: none !important;
+}
+
+.category-table {
+  width: 300px;
+}
+
+.category-table {
+  width: 300px;
+}
+
+.category-td-subscribed{
+  display: inline-block;
+  float: right;
+  border: 1px solid;
+  padding: 1px;
+  color: white;
+  background-color: rgba(0, 128, 0, 0.63);
+}
+
+.category-td-not-subscribed{
+  display: inline-block;
+  float: right;
+  border: 1px solid;
+  padding: 1px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.75);
+
+}
+
+
+.glyphicon-chevron-up {
+  color: #FF8B60;
+}
+
+.glyphicon-chevron-down {
+  color: #9393FF
+}
+
+
+.show-content-container {
+  padding-top: 10px;
+  width: 100%;
+}
+
+.show-content-container > a > img {
+  width: 100%;
+}
+
+.img-index-container{
+  width: 100%
+}
+
+.img-index-container > a > img {
+    width: 100%;
+}
+
+.submit-category > p {
+  display: inline-block;
+  padding: 10px;
+}

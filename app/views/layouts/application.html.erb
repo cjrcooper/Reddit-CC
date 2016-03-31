@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href='https://fonts.googleapis.com/css?family=Dancing+Script|Damion' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
@@ -21,9 +22,8 @@
       <li><%= link_to cat.cat_name, cat%></li>
      <% end %>
     <% end %>
-    <p><a href="/categories">More Subreddits</a></p>
+      <li class="browse-categories"><a href="/categories">Find More Subreddits ..</a></li>
    </ul>
-
 </nav>
 
 <div id="my-page">
@@ -43,7 +43,7 @@
                 <% if user_signed_in? -%>
       						<ul class="nav navbar-nav navbar-right">
       							<li><%= link_to 'Submit link', new_link_path %></li>
-                    <li><%= link_to @current_user.email, edit_user_registration_path %></li>
+                    <li class="login-name"><%= link_to current_user.email, edit_user_registration_path %></li>
       							<li class="sign"><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
 
       						</ul>
@@ -59,7 +59,7 @@
   </header>
 
     <div id="my-content">
-      <a href="#my-menu">Browse Subreddits</a>
+      <a class="browser-menu-button" href="#my-menu"><span class="glyphicon glyphicon-chevron-left"></span> Browse Subreddits</a>
 
     	<div id="main_content" class="container">
     		<% flash.each do |name, msg| %>

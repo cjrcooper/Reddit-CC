@@ -14,6 +14,22 @@
 	</div>
 <% end %>
 
+
+
+<% if @link.url.start_with?('http://') && @allowed_extensions.any?{ |ext| @link.url.end_with?(ext) } %>
+  <% @img = @link.url %>
+<% elsif @link.url.include? "youtube.com/watch" %>
+  <% @vid = @link.url.sub! 'watch?v=', 'embed/' %>
+<% end %>
+
+<div class="show-content-container">
+<% if @img %>
+    <a href="<%= @link.url %>"><img src="<%= @img %>"></a>
+<% elsif @vid %>
+    <iframe width="100%" height="400" src="<%= @vid %>" frameborder="0" allowfullscreen></iframe>
+<% end %>
+</div>
+
 <h3 class="comments_title">
   <%= @link.comments.count %> Comments
 </h3>

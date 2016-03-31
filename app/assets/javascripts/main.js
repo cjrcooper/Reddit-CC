@@ -20,8 +20,34 @@ $(document).ready(function(){
     });
 
     $(window).load(function(){
-      $(".mm-title").html('Subreddits');
+      x = $(".sign").children().html()
+      y = "Sign out"
+
+      if (x === y){
+        $(".mm-title").html('My').append("<span class='small-reddit-logo'> Subreddits</span>").css({
+          "font-size": "12pt",
+          "color": "#000",
+          "font-weight": "700"
+        });
+      }
+      else {
+        $(".mm-title").html('All').append("<span class='small-reddit-logo'> Subreddits</span>");
+      }
     });
+
+
+
+
+    $(".browser-menu-button").on("click", function(){
+      setTimeout(function(){
+        $('#mm-blocker').css({
+            backgroundColor: 'rgba(3,2,1,0.6)'
+          });
+      })
+      });
+
+
+
 
     $(window).load(function(){
       setTimeout(function(){

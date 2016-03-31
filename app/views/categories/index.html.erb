@@ -2,7 +2,7 @@
 
 <h1>Listing Categories</h1>
 
-<table>
+<table class="category-table">
   <thead>
     <tr>
       <th colspan="3"></th>
@@ -13,9 +13,17 @@
     <% @categories.each do |category| %>
       <tr>
         <% if @current_user.present? && @current_user.categories.include?(category) %>
-        <td><%= link_to category.cat_name, category %><span class="glyphicon glyphicon-ok"></span></td>
+        <td><%= link_to category.cat_name, category %>
+          <div class="category-td-subscribed">
+            <span>Subscribed </span><span class="glyphicon glyphicon-ok"></span>
+          </div>
+        </td>
         <% else %>
-        <td><%= link_to category.cat_name, category %><span class="glyphicon glyphicon-plus"></span></td>
+        <td><%= link_to category.cat_name, category %>
+          <div class="category-td-not-subscribed">
+            <span>Add </span><span class="glyphicon glyphicon-plus"></span>
+          </div>
+          </td>
         <% end %>
       </tr>
     <% end %>

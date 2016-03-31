@@ -1,10 +1,13 @@
+
+
+
+
 <% @links.each do |link| %>
 <div class="link-container">
   <div class="link row clearfix">
-    <h2>
-      <%= link_to link.title, link %><br>
-      <small class="author">Submitted <%= time_ago_in_words(link.created_at) %> by <%= link.user.email %> from <%= link_to link.category.cat_name, link.category %></small>
-    </h2>
+
+    <h4><%= link_to link.title, link %></h4>
+      <div class="author">Submitted <%= time_ago_in_words(link.created_at) %> by <%= link.user.email %> from <%= link_to link.category.cat_name, link.category %></div>
 
     <% if link.url.start_with?('http://') && @allowed_extensions.any?{ |ext| link.url.end_with?(ext) } %>
       <% @img = link.url %>
@@ -24,20 +27,20 @@
     <% end %>
 
 
-     <%= link_to like_link_path(link), method: :put, remote: true, class: "btn btn-default btn-sm vote" do %>
-       <span class="glyphicon glyphicon-chevron-up"></span>
-       Upvote
+     <%= link_to like_link_path(link), method: :put, remote: true, class: "btn btn-default btn-sm vote upvote" do %>
+       <span class="glyphicon glyphicon-chevron-up"></span><span> Upvote </span>
        <span class="votes upcount"><%= link.get_upvotes.size %></span>
      <% end %>
-     <%= link_to dislike_link_path(link), method: :put, remote: true, class: "btn btn-default btn-sm vote" do %>
-       <span class="glyphicon glyphicon-chevron-down">
-       Downvote
+     <%= link_to dislike_link_path(link), method: :put, remote: true, class: "btn btn-default btn-sm vote downvote" do %>
+       <span class="glyphicon glyphicon-chevron-down"></span><span> Downvote </span>
        <span class="votes downcount"><%= link.get_downvotes.size %></span>
      <% end %>
 
-     <div class="btn btn-default btn-sm">
-        <%= link_to link.comments.size, link %> Comments
-     </div>
+
+       <div class="btn btn-default btn-sm">
+          <%= link.comments.size %> Comments
+       </div>
+
 
    </div>
   <div>
@@ -48,7 +51,7 @@
     </div>
   <% elsif @vid %>
     <div class="img-index-container">
-      <iframe width="640" height="390" src="<%= @vid %>" frameborder="0" allowfullscreen></iframe>
+      <iframe width="100%" height="400" src="<%= @vid %>" frameborder="0" allowfullscreen></iframe>
     </div>
   <% end %>
   </div>
