@@ -1,11 +1,11 @@
-== README
+== Reddit CC
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a reddit clone I made for my second assignment. 
 
-Things you may want to cover:
+Part of the stack:
 
-* Ruby version
+* Rails version 
+  - rails, '4.2.6'
 
 * System dependencies
 
