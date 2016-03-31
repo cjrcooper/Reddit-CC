@@ -26,10 +26,10 @@
 <% if (link.category_id == params[:id].to_i) %>
 <div class="link-container">
   <div class="link row clearfix">
-    <h2>
+    <h4>
       <%= link_to link.title, link %><br>
       <small class="author">Submitted <%= time_ago_in_words(link.created_at) %> by <%= link.user.email %></small>
-    </h2>
+    </h4>
 
     <% if link.url.start_with?('http://') && @allowed_extensions.any?{ |ext| link.url.end_with?(ext) } %>
       <% @img = link.url %>
