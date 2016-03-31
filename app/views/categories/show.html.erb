@@ -4,7 +4,19 @@
   <strong>Subreddit</strong>
   <%= @category.cat_name %>
 </p>
+<p>
+  <% if @current_user.present? && @current_user.categories.include?(@category) %>
+    <span>Subcribed <input type="checkbox" name="vehicle" value="Bike" checked="true"></span>
+  <% else %>
+    <span>Not Subscribed <input type="checkbox" name="vehicle" value="Bike"></span>
+  <% end %>
+</p>
 
+<% if @current_user.present? && @current_user.categories.include?(@category) %>
+  <%= link_to 'leave', "/categories/#{@category.id}/join", :method => :delete  %>
+<% else %>
+  <%= link_to 'join', "/categories/#{@category.id}/join", :method => :post  %>
+<% end %>
 
 <% @links.each do |link| %>
 <% if (link.category_id == params[:id].to_i) %>
@@ -12,7 +24,7 @@
   <div class="link row clearfix">
     <h2>
       <%= link_to link.title, link %><br>
-      <small class="author">Submitted <%= time_ago_in_words(link.created_at) %> by <%= link.user.email %> from <%= link.category.cat_name %></small>
+      <small class="author">Submitted <%= time_ago_in_words(link.created_at) %> by <%= link.user.email %></small>
     </h2>
 
     <% if link.url.start_with?('http://') && @allowed_extensions.any?{ |ext| link.url.end_with?(ext) } %>
@@ -33,16 +45,16 @@
     <% end %>
 
 
-     <%= link_to like_link_path(link), method: :put, remote: true, class: "btn btn-default btn-sm vote" do %>
-       <span class="glyphicon glyphicon-chevron-up"></span>
-       Upvote
-       <span class="votes"><%= link.get_upvotes.size %></span>
-     <% end %>
-     <%= link_to dislike_link_path(link), method: :put, remote: true, class: "btn btn-default btn-sm vote" do %>
-       <span class="glyphicon glyphicon-chevron-down">
-       Downvote
-       <span class="votes"><%= link.get_downvotes.size %></span>
-     <% end %>
+    <%= link_to like_link_path(link), method: :put, remote: true, class: "btn btn-default btn-sm vote" do %>
+      <span class="glyphicon glyphicon-chevron-up"></span>
+      Upvote
+      <span class="votes upcount"><%= link.get_upvotes.size %></span>
+    <% end %>
+    <%= link_to dislike_link_path(link), method: :put, remote: true, class: "btn btn-default btn-sm vote" do %>
+      <span class="glyphicon glyphicon-chevron-down">
+      Downvote
+      <span class="votes downcount"><%= link.get_downvotes.size %></span>
+    <% end %>
 
      <div class="btn btn-default btn-sm">
         <%= link.comments.size %> Comments

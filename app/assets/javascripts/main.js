@@ -12,9 +12,15 @@ $(document).ready(function(){
     })
 
     $('a.vote[data-remote]').on('ajax:success', function (e, result) {
-      $(this).find('.votes').text(result.count);
+      var $buttons = $(this).closest('.btn-group');
+      $buttons.find('.upcount').text(result.upcount);
+      $buttons.find('.downcount').text(result.downcount);
     }).on('ajax:error', function () {
       window.location = '/users/sign_in';
+    });
+
+    $(window).load(function(){
+      $(".mm-title").html('Subreddits');
     });
 
     $(window).load(function(){

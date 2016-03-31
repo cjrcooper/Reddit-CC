@@ -5,6 +5,8 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @categories = Category.all
+    @cats = Category.none
+    @cats = current_user.categories if current_user
   end
 
   # GET /categories/1
@@ -16,6 +18,7 @@ class CategoriesController < ApplicationController
 
     @cats = Category.none
     @cats = current_user.categories if current_user
+    @category = set_category
   end
 
   # GET /categories/new
@@ -65,6 +68,18 @@ class CategoriesController < ApplicationController
       format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def join
+    @category = Category.find(params[:id])
+    @category.users << current_user
+    redirect_to :back
+  end
+
+  def leave
+    @category = Category.find(params[:id])
+    @category.users.delete current_user
+    redirect_to :back
   end
 
   private

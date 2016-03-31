@@ -8,18 +8,19 @@ class LinksController < ApplicationController
 
     @links = Link.limit(10).sort_by { |link| link.get_upvotes.size - link.get_downvotes.size }
     @links.reverse!
-    @allowed_extensions = %w[.jpg .jpeg .png .gif]
+    @allowed_extensions = %w[.jpg .jpeg .png .gif .gifv]
 
     @cats = Category.none
     @cats = current_user.categories if current_user
 
-    
   end
 
 
   # GET /links/1
   # GET /links/1.json
   def show
+    @cats = Category.none
+    @cats = current_user.categories if current_user
   end
 
   # GET /links/new
@@ -30,6 +31,7 @@ class LinksController < ApplicationController
 
   # GET /links/1/edit
   def edit
+    @cat = Category.all
   end
 
   # POST /links
@@ -76,13 +78,13 @@ class LinksController < ApplicationController
   def upvote
     @link = Link.find(params[:id])
     @link.upvote_by current_user
-    render :json => { :count => @link.get_upvotes.count }
+    render :json => { :upcount => @link.get_upvotes.count, :downcount => @link.get_downvotes.count }
   end
 
   def downvote
     @link = Link.find(params[:id])
     @link.downvote_by current_user
-    render :json => { :count => @link.get_downvotes.count }
+    render :json => { :upcount => @link.get_upvotes.count, :downcount => @link.get_downvotes.count }
   end
 
   private

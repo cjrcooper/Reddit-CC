@@ -13,4 +13,8 @@ Rails.application.routes.draw do
 
   root to: "links#index"
 
+  post '/categories/:id/join' => 'categories#join'
+
+  delete '/categories/:id/join' => 'categories#leave'
+
 end

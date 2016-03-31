@@ -12,8 +12,11 @@
   <tbody>
     <% @categories.each do |category| %>
       <tr>
-        <td><%= category.cat_name %></td>
-        <td><%= link_to 'Show', category %></td>
+        <% if @current_user.present? && @current_user.categories.include?(category) %>
+        <td><%= link_to category.cat_name, category %><span class="glyphicon glyphicon-ok"></span></td>
+        <% else %>
+        <td><%= link_to category.cat_name, category %><span class="glyphicon glyphicon-plus"></span></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
